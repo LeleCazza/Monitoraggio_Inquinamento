@@ -1,0 +1,37 @@
+package Progetto;
+
+message Token{
+  message Media{
+    required int32 idNodo = 1;
+    required double media = 2;
+  }
+  repeated Media media = 3;
+}
+
+message ListaNodi{
+  message Nodo{
+    required int32 idNodo = 4;
+    required int32 portaNodo = 5;
+  }
+  repeated Nodo nodo = 6;
+}
+
+message Risposta{
+  required string risposta = 7;
+}
+
+service SincronizzaLista{
+  rpc SincronizzaLista (ListaNodi) returns (Risposta) {}
+}
+
+service EliminaNodiUsciti{
+  rpc EliminaNodiUsciti (ListaNodi) returns (Risposta) {}
+}
+
+service PassaToken{
+  rpc PassaToken (Token) returns (Risposta) {}
+}
+
+service EliminaNodoDaLista{
+  rpc EliminaNodoDaLista (ListaNodi) returns (Risposta) {}
+}
